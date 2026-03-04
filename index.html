@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wizard Washing  Magic-Level Clean</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===================== NAV ===================== -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#hero" class="nav__logo">
+        <img src="brand_assets/Logo.png" alt="Wizard Washing Logo" />
+      </a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav__links" id="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+        <a href="#quote" class="nav__cta">Get a Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="hero">
+    <div class="hero__sparkles" aria-hidden="true">
+      <span class="sparkle s1">✦</span>
+      <span class="sparkle s2">✦</span>
+      <span class="sparkle s3">★</span>
+      <span class="sparkle s4">✦</span>
+      <span class="sparkle s5">★</span>
+      <span class="sparkle s6">✦</span>
+      <span class="sparkle s7">★</span>
+      <span class="sparkle s8">✦</span>
+      <span class="sparkle s9">★</span>
+      <span class="sparkle s10">✦</span>
+      <span class="sparkle s11">★</span>
+      <span class="sparkle s12">✦</span>
+      <span class="sparkle s13">★</span>
+      <span class="sparkle s14">✦</span>
+    </div>
+    <!-- Hero text — centered -->
+    <div class="hero__inner">
+      <div class="hero__text">
+        <h1>Magic-Level Clean,<br /><span class="gold">Every Time</span></h1>
+        <p>Professional house washing with a touch of wizardry. We make your home sparkle. No spells required.</p>
+        <a href="#quote" class="btn btn--gold">Get Your Free Quote ✨</a>
+      </div>
+    </div>
+    <!-- wave transition handled by .services::before -->
+  </section>
+
+  <!-- ===================== SERVICES ===================== -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2 class="section-title">What We Do</h2>
+      <p class="section-sub">From roof to bin. We handle the dirty work so you don't have to.</p>
+      <div class="services__grid">
+
+        <div class="service-card">
+          <div class="service-card__icon">🏠</div>
+          <h3>House Washing</h3>
+          <p>Blast away years of grime, mould, and algae from your home's exterior. We use gentle soft-wash techniques that are tough on dirt but kind to your paint and surfaces.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card__icon">✨</div>
+          <h3>Concrete Cleaning</h3>
+          <p>Driveways, pathways, patios, we restore your concrete to its original clean finish using high-pressure equipment and professional-grade detergents.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card__icon">🗑️</div>
+          <h3>Garbage Bin Cleaning</h3>
+          <p>Smelly bins are no match for our magic. We sanitise and deodorise your bins inside and out so they're fresh and clean every week or month.</p>
+        </div>
+
+      </div>
+    </div>
+    <div class="wave-divider wave-divider--blue wave-divider--flip"></div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about__inner">
+        <div class="about__text">
+          <h2 class="section-title light">About Us</h2>
+          <p>We're a local, family-run cleaning crew based right here in Chilliwack. We started Wizard Washing because we believe every home deserves to look its best, without breaking the bank or dealing with unreliable contractors.</p>
+          <p>We show up on time, we communicate clearly, and we don't leave until the job is done right. No magic tricks, just honest, hard work and a pressure washer that means business.</p>
+          <a href="#quote" class="btn btn--gold">Book a Clean ✨</a>
+        </div>
+        <div class="about__logo">
+          <img src="brand_assets/Logo.png" alt="Wizard Washing" />
+        </div>
+      </div>
+    </div>
+    <div class="wave-divider wave-divider--light"></div>
+  </section>
+
+  <!-- ===================== QUOTE ===================== -->
+  <section class="quote-section" id="quote">
+    <div class="container">
+      <h2 class="section-title">Get Your Free Quote</h2>
+      <p class="section-sub">Fill in the form below and we'll get back to you with a friendly, no-obligation quote.</p>
+
+      <div class="quote-form-container">
+        <form id="quote-form" action="https://formspree.io/f/xbdabzdq" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="New Quote Request — Wizard Washing" />
+
+          <div class="form__row form__row--two">
+            <div class="form__group">
+              <label for="name">Your Name <span class="required">*</span></label>
+              <input type="text" id="name" name="name" placeholder="e.g. Jane Smith" required />
+            </div>
+            <div class="form__group">
+              <label for="email">Email Address <span class="required">*</span></label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required />
+            </div>
+          </div>
+
+          <div class="form__row form__row--two">
+            <div class="form__group">
+              <label for="phone">Phone Number <span class="optional">(optional)</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="e.g. 000-000-0000" />
+            </div>
+            <div class="form__group">
+              <label for="service">Service Required <span class="required">*</span></label>
+              <select id="service" name="service" required>
+                <option value="">Select a service…</option>
+                <option value="House Washing">House Washing</option>
+                <option value="Concrete Cleaning">Concrete Cleaning</option>
+                <option value="Garbage Bin Cleaning">Garbage Bin Cleaning</option>
+                <option value="Roof Cleaning">Roof Cleaning</option>
+                <option value="Multiple Services">Multiple Services</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form__group">
+            <label for="message">Tell Us More <span class="optional">(optional)</span></label>
+            <textarea id="message" name="message" rows="4" placeholder="What do you need done? Any details about your property or specific concerns…"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--gold btn--full" id="submit-btn">
+            Request My Free Quote ✨
+          </button>
+        </form>
+
+        <!-- Success state (hidden until form submitted) -->
+        <div class="form__success" id="form-success" aria-live="polite">
+          <div class="form__success-sparkles" aria-hidden="true">
+            <span class="burst b1">✦</span>
+            <span class="burst b2">★</span>
+            <span class="burst b3">✦</span>
+            <span class="burst b4">★</span>
+            <span class="burst b5">✦</span>
+            <span class="burst b6">★</span>
+          </div>
+          <div class="form__success-icon">🧙</div>
+          <h3>Your quote request is on its way!</h3>
+          <p>Thanks for reaching out! We'll be in touch shortly with your free quote.</p>
+        </div>
+      </div>
+    </div>
+    <div class="wave-divider wave-divider--cyan wave-divider--flip"></div>
+  </section>
+
+  <!-- ===================== REVIEWS ===================== -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <h2 class="section-title light">What Our Customers Say</h2>
+      <p class="section-sub light">Don't just take our word for it — hear it from happy locals.</p>
+      <div class="reviews__grid">
+
+        <div class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__quote">"Our driveway looks brand new! The team was punctual, friendly, and did an incredible job. Highly recommend Wizard Washing to anyone in the valley."</p>
+          <p class="review-card__name">— Sarah M., Chilliwack</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__quote">"Had the house exterior washed before we listed it for sale. It made such a difference — looks like a completely different house. Worth every penny!"</p>
+          <p class="review-card__name">— Mark &amp; Linda T., Chilliwack</p>
+        </div>
+
+        <div class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__quote">"The garbage bin service is a game changer. No more dreading bin day! Fair price, fast service, and the bins actually smell clean now."</p>
+          <p class="review-card__name">— Dave R., Chilliwack</p>
+        </div>
+
+      </div>
+    </div>
+    <div class="wave-divider wave-divider--white wave-divider--flip"></div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <h2 class="section-title">Got Questions? We've Got Answers</h2>
+      <p class="section-sub">Everything you need to know before booking.</p>
+
+      <div class="faq__list">
+
+        <div class="faq__item">
+          <button class="faq__question" aria-expanded="false">
+            How long does a house wash take?
+            <span class="faq__chevron">▼</span>
+          </button>
+          <div class="faq__answer">
+            <p>Most standard homes take between 1–3 hours depending on size and the level of buildup. We'll give you a more accurate estimate when we see your property.</p>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question" aria-expanded="false">
+            Do I need to be home during the service?
+            <span class="faq__chevron">▼</span>
+          </button>
+          <div class="faq__answer">
+            <p>Not necessarily! As long as we have access to an outdoor tap and the areas we're cleaning, you're free to go about your day. We'll send you a message when we're done.</p>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question" aria-expanded="false">
+            What areas do you service?
+            <span class="faq__chevron">▼</span>
+          </button>
+          <div class="faq__answer">
+            <p>We proudly serve Chilliwack and the surrounding Fraser Valley. Including Abbotsford, Hope, Harrison, and Agassiz. Not sure if we reach you? Just ask!</p>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question" aria-expanded="false">
+            Is your equipment safe for plants and pets?
+            <span class="faq__chevron">▼</span>
+          </button>
+          <div class="faq__answer">
+            <p>Absolutely. We use biodegradable, eco-friendly detergents and always rinse surrounding plants thoroughly. We just ask that pets are kept inside during the wash for their safety.</p>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question" aria-expanded="false">
+            How do I book?
+            <span class="faq__chevron">▼</span>
+          </button>
+          <div class="faq__answer">
+            <p>Fill in our <a href="#quote">free quote form</a> above! Once we receive your request we'll reach out within 2 hours to confirm details and schedule your free quote.</p>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question" aria-expanded="false">
+            Do you offer any satisfaction guarantee?
+            <span class="faq__chevron">▼</span>
+          </button>
+          <div class="faq__answer">
+            <p>Yes! If you're not happy with the results, let us know and we'll come back to make it right, no questions asked. Your satisfaction is our magic word.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="wave-divider wave-divider--blue"></div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <img src="brand_assets/Logo.png" alt="Wizard Washing Logo" class="footer__logo" />
+          <p class="footer__tagline">Proudly serving Chilliwack<br />and the Fraser Valley</p>
+        </div>
+        <div class="footer__links">
+          <h4>Quick Links</h4>
+          <a href="#services">Services</a>
+          <a href="#about">About Us</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#faq">FAQ</a>
+          <a href="#quote">Get a Quote</a>
+        </div>
+        <div class="footer__contact">
+          <h4>Get In Touch</h4>
+          <p>📞 <a href="tel:+16048195507">604-819-5507</a></p>
+          <p>✉️ <a href="mailto:Jake@wizardwashing.ca">hello@wizardwashing.ca</a></p>
+          <p>📍 Chilliwack, BC</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 WIZARD WASHING INC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
