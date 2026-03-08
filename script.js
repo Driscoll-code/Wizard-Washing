@@ -129,3 +129,55 @@ form.addEventListener('submit', async (e) => {
 form.querySelectorAll('input, select, textarea').forEach(field => {
   field.addEventListener('input', () => field.classList.remove('error'));
 });
+
+/* ─── BEFORE/AFTER CAROUSEL ─── */
+const track   = document.getElementById('carousel-track');
+const prevBtn = document.getElementById('carousel-prev');
+const nextBtn = document.getElementById('carousel-next');
+const dotsEl  = document.getElementById('carousel-dots');
+
+if (track) {
+  const slides   = Array.from(track.children);
+  const dots     = dotsEl ? Array.from(dotsEl.children) : [];
+  let current    = 0;
+  let autoTimer  = null;
+
+  function goTo(index) {
+    // Wrap around: past last → back to 0, before first → go to last
+    current = ((index % slides.length) + slides.length) % slides.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  function startAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current + 1), 3500);
+  }
+
+  function resetAuto() {
+    startAuto(); // restart the 3.5s timer after any manual interaction
+  }
+
+  prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+  nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetAuto(); }));
+
+  // Pause on hover, resume on leave
+  track.closest('.carousel').addEventListener('mouseenter', () => clearInterval(autoTimer));
+  track.closest('.carousel').addEventListener('mouseleave', () => startAuto());
+
+  // Touch swipe support
+  let touchStartX = 0;
+  track.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+    clearInterval(autoTimer);
+  }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
+    startAuto();
+  });
+
+  goTo(0);
+  startAuto();
+}
