@@ -1065,8 +1065,22 @@ img {
   /* ── About ── */
   .about__logo    { flex: none; width: 140px; }
 
-  /* ── Carousel ── */
-  .carousel__btn  { width: 32px; height: 32px; font-size: 1.2rem; }
+  /* ── Carousel — overlay arrows on top of photos so photos fill full width ── */
+  .results        { padding: 3rem 0.75rem; }
+  .carousel       { position: relative; gap: 0; }
+  .carousel__window { width: 100%; }
+  .carousel__btn  {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 36px;
+    height: 36px;
+    font-size: 1.3rem;
+    opacity: 0.88;
+  }
+  .carousel__btn--prev { left: 0.4rem; }
+  .carousel__btn--next { right: 0.4rem; }
 
   /* ── Form ── */
   .form__row--two { flex-direction: column; }
