@@ -11,6 +11,16 @@ window.addEventListener('scroll', () => {
 /* ─── HAMBURGER MENU ─── */
 const hamburger  = document.getElementById('hamburger');
 const navLinks   = document.getElementById('nav-links');
+const navClose   = document.getElementById('nav-close');
+
+function closeNav() {
+  navLinks.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+  const spans = hamburger.querySelectorAll('span');
+  spans[0].style.transform = '';
+  spans[1].style.opacity   = '';
+  spans[2].style.transform = '';
+}
 
 hamburger.addEventListener('click', () => {
   const isOpen = navLinks.classList.toggle('open');
@@ -28,16 +38,11 @@ hamburger.addEventListener('click', () => {
   }
 });
 
+navClose.addEventListener('click', closeNav);
+
 // Close menu when a nav link is clicked
 navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-    const spans = hamburger.querySelectorAll('span');
-    spans[0].style.transform = '';
-    spans[1].style.opacity   = '';
-    spans[2].style.transform = '';
-  });
+  link.addEventListener('click', closeNav);
 });
 
 /* ─── FAQ ACCORDION ─── */

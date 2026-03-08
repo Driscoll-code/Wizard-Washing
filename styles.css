@@ -167,6 +167,27 @@ img {
   color: #1A2B4A !important;
 }
 
+/* Close button inside sidebar (hidden on desktop, shown on mobile) */
+.nav__close {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.nav__close:hover { background: rgba(255,255,255,0.3); }
+
 /* Hamburger */
 .nav__hamburger {
   display: none;
@@ -435,7 +456,7 @@ img {
 
 .results__pair-label {
   font-family: 'Fredoka One', cursive;
-  font-size: 1.3rem;
+  font-size: 0.9rem;
   color: #1E4E9E;
   text-align: center;
   padding: 1rem 1.5rem 0.8rem;
@@ -450,7 +471,7 @@ img {
 .results__photo-wrap {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
 }
 
 .results__photo-wrap:first-child {
@@ -984,13 +1005,14 @@ img {
     flex-direction: column;
     justify-content: center;
     gap: 2rem;
-    padding: 2rem;
+    padding: 4.5rem 2rem 2rem;
     transition: right 0.35s ease;
     box-shadow: -10px 0 40px rgba(0,0,0,0.3);
     z-index: 200;
   }
   .nav__links.open { right: 0; }
   .nav__links a { font-size: 1.2rem; }
+  .nav__close { display: flex; }
 
   /* ── Hero ── */
   .hero {
