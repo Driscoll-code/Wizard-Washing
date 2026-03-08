@@ -356,12 +356,14 @@ img {
 
 .carousel__window {
   flex: 1;
+  min-width: 0;
   overflow: hidden;
   border-radius: 15px;
 }
 
 .carousel__track {
   display: flex;
+  width: 100%;
   transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -898,7 +900,7 @@ img {
 
 .stat-item__number {
   font-family: 'Fredoka One', cursive;
-  font-size: clamp(2.8rem, 4vw, 4rem);
+  font-size: clamp(2rem, 5vw, 4rem);
   color: #FDB813;
   line-height: 1;
   display: block;
@@ -958,8 +960,8 @@ img {
 @media (max-width: 900px) {
   .services__grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   .reviews__grid  { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
-  .carousel__btn  { width: 40px; height: 40px; font-size: 1.6rem; }
-  .stats__grid    { grid-template-columns: repeat(2, 1fr); gap: 2.5rem 1.5rem; }
+  .carousel__btn  { width: 38px; height: 38px; font-size: 1.4rem; }
+  .stats__grid    { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   .about__inner   { flex-direction: column; text-align: center; }
   .about__logo    { flex: 0 0 140px; }
   .footer__inner  { grid-template-columns: 1fr 1fr; }
@@ -988,11 +990,15 @@ img {
   .nav__links.open { right: 0; }
   .nav__links a { font-size: 1.2rem; }
 
-  /* Hero */
-  .hero { min-height: 100vh; }
+  /* Hero — stacks text above wizard */
+  .hero {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+  }
 
   .hero__inner {
-    padding: 6rem 1.5rem 16rem;
+    padding: 7rem 1.5rem 2rem;
     text-align: center;
   }
 
@@ -1003,14 +1009,28 @@ img {
 
   .hero__text p { margin: 0 auto 2rem; font-size: 1rem; }
 
-  /* Wizard — drop to bottom on mobile */
+  /* Wizard — sits below text, static flow on mobile */
   .hero__wizard {
+    position: relative;
     top: auto;
-    bottom: 0;
+    bottom: auto;
+    right: auto;
     transform: none;
+    text-align: right;
+    margin-top: -1rem;
   }
 
-  .hero__wizard img { height: clamp(160px, 42vw, 260px); }
+  .hero__wizard img {
+    height: clamp(140px, 50vw, 240px);
+    display: inline-block;
+  }
+
+  /* Stats */
+  .stats__grid    { grid-template-columns: 1fr; gap: 1.5rem; }
+  .stats          { padding: 2.5rem 1.5rem; }
+
+  /* Carousel arrows */
+  .carousel__btn  { width: 34px; height: 34px; font-size: 1.3rem; }
 
   /* Form */
   .form__row--two { flex-direction: column; }
@@ -1023,12 +1043,7 @@ img {
 
 @media (max-width: 480px) {
   /* Hero */
-  .hero__text h1  { font-size: 2.2rem; }
-  .hero__inner    { padding: 5rem 1.25rem 14rem; }
-
-  /* Stats — single column on small phones */
-  .stats__grid    { grid-template-columns: 1fr; gap: 1.75rem; }
-  .stat-item__number { font-size: 2.8rem; }
+  .hero__text h1  { font-size: 2rem; }
 
   /* Cards */
   .services__grid,
@@ -1045,7 +1060,4 @@ img {
 
   /* Buttons */
   .btn { font-size: 1rem; padding: 0.75rem 1.5rem; }
-
-  /* Carousel */
-  .carousel__btn  { width: 34px; height: 34px; font-size: 1.3rem; }
 }
