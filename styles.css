@@ -841,6 +841,14 @@ img {
   color: rgba(255,255,255,0.5);
 }
 
+.footer__bottom a {
+  color: rgba(255,255,255,0.55);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.footer__bottom a:hover { color: #FDB813; }
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
   .services__grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
