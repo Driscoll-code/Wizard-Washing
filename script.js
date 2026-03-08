@@ -167,7 +167,7 @@ const statObserver = new IntersectionObserver((entries) => {
       statObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.5 });
+}, { threshold: 0.15 });
 
 document.querySelectorAll('.stat-item__number[data-target]').forEach(el => statObserver.observe(el));
 
