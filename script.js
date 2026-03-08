@@ -130,6 +130,82 @@ form.querySelectorAll('input, select, textarea').forEach(field => {
   field.addEventListener('input', () => field.classList.remove('error'));
 });
 
+/* ─── SCROLL FADE-IN ─── */
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      fadeObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+
+/* ─── STATS COUNTER ─── */
+function animateCounter(el) {
+  const target   = parseFloat(el.dataset.target);
+  const suffix   = el.dataset.suffix || '';
+  const decimals = parseInt(el.dataset.decimals || '0');
+  const duration = 1800;
+  const start    = performance.now();
+
+  function step(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased    = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+    const value    = (target * eased).toFixed(decimals);
+    el.textContent = value + suffix;
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounter(entry.target);
+      statObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stat-item__number[data-target]').forEach(el => statObserver.observe(el));
+
+/* ─── BUTTON WATER RIPPLE ─── */
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const ripple = document.createElement('span');
+    ripple.className = 'btn-ripple';
+    const rect = btn.getBoundingClientRect();
+    ripple.style.left = (e.clientX - rect.left) + 'px';
+    ripple.style.top  = (e.clientY - rect.top) + 'px';
+    btn.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 700);
+  });
+});
+
+/* ─── CURSOR SPARKLE TRAIL (desktop only) ─── */
+if (window.matchMedia('(pointer: fine)').matches) {
+  const CHARS = ['✦', '★', '✦', '✧', '★'];
+  let lastSpawn = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    const now = Date.now();
+    if (now - lastSpawn < 80) return; // throttle: max ~12/sec
+    if (Math.random() > 0.55) return; // random skip for natural look
+    lastSpawn = now;
+
+    const el = document.createElement('span');
+    el.className  = 'cursor-sparkle';
+    el.textContent = CHARS[Math.floor(Math.random() * CHARS.length)];
+    el.style.left = e.clientX + 'px';
+    el.style.top  = e.clientY + 'px';
+    el.style.fontSize = (0.5 + Math.random() * 0.6) + 'rem';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 800);
+  });
+}
+
 /* ─── BEFORE/AFTER CAROUSEL ─── */
 const track   = document.getElementById('carousel-track');
 const prevBtn = document.getElementById('carousel-prev');

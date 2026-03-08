@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wizard Washing | Pressure Washing Chilliwack, BC</title>
+  <title>Pressure Washing Chilliwack BC | Wizard Washing</title>
 
   <!-- SEO Meta Tags -->
   <meta name="description" content="Professional exterior cleaning in Chilliwack. We specialize in house washing, roof moss removal, driveway cleaning, and bin cleaning. Get your free quote from Wizard Washing today!" />
@@ -52,6 +52,8 @@
   }
   </script>
 
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="favicon-192.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -97,13 +99,17 @@
       <span class="sparkle s13">★</span>
       <span class="sparkle s14">✦</span>
     </div>
-    <!-- Hero text — centered -->
+    <!-- Hero text — left aligned -->
     <div class="hero__inner">
       <div class="hero__text">
         <h1>Magic-Level Clean,<br /><span class="gold">Every Time</span></h1>
-        <p>Chilliwack's trusted pressure washing experts. House washing, roof moss removal, driveway cleaning, and bin sanitizing — done right, every time.</p>
+        <p>Chilliwack's trusted pressure washing experts. House washing, driveway cleaning, roof moss removal, and bin sanitizing. Done right, every time.</p>
         <a href="#quote" class="btn btn--gold">Get Your Free Quote ✨</a>
       </div>
+    </div>
+    <!-- Wizard illustration — flush right -->
+    <div class="hero__wizard" aria-hidden="true">
+      <img src="brand_assets/WizardStanding.png" alt="" width="1280" height="714" />
     </div>
   </section>
 
@@ -114,28 +120,22 @@
       <p class="section-sub">From roof to bin — we handle the dirty work so you don't have to.</p>
       <div class="services__grid">
 
-        <div class="service-card">
+        <div class="service-card fade-up">
           <div class="service-card__icon">🏠</div>
           <h3>House Washing & Soft Wash Exterior Cleaning</h3>
-          <p>Remove algae, mould, and years of grime from your home's exterior. Our soft wash house cleaning is safe for vinyl siding, stucco, wood, and Hardie board — giving you a like-new finish without the risk of high-pressure damage.</p>
+          <p>Remove algae, mould, and years of grime from your home's exterior. Our soft wash house cleaning is safe for vinyl siding, stucco, wood, and Hardie board, giving you a like-new finish without the risk of high-pressure damage.</p>
         </div>
 
-        <div class="service-card">
+        <div class="service-card fade-up" style="transition-delay:0.1s">
           <div class="service-card__icon">✨</div>
           <h3>Driveway & Concrete Pressure Washing</h3>
           <p>Restore your driveway, patio, or sidewalk to its original finish. We remove oil stains, dirt, moss, and grime from concrete surfaces using professional-grade pressure washing equipment.</p>
         </div>
 
-        <div class="service-card">
+        <div class="service-card fade-up" style="transition-delay:0.2s">
           <div class="service-card__icon">🗑️</div>
           <h3>Garbage Bin Cleaning Chilliwack</h3>
-          <p>Keep your bins odor-free and sanitized year-round. Our bi-weekly garbage bin cleaning service is just $35 — we sanitize and deodorize inside and out so you never have to deal with smelly cans again.</p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-card__icon">🏚️</div>
-          <h3>Roof Moss Removal & Soft Wash Roof Cleaning</h3>
-          <p>Protect your roof and extend its life with safe, low-pressure soft wash roof cleaning. We remove moss, algae, black streaks, and lichen from asphalt shingles, cedar shake, and metal roofs across Chilliwack.</p>
+          <p>Keep your bins odor-free and sanitized year-round. Our bi-weekly garbage bin cleaning service sanitizes and deodorizes inside and out so you never have to deal with smelly cans again.</p>
         </div>
 
       </div>
@@ -254,12 +254,36 @@
         <div class="about__text">
           <h2 class="section-title light">About Us</h2>
           <p>We're a local, family-run pressure washing company based right here in Chilliwack, BC. We started Wizard Washing because we believe every home deserves to look its best — without breaking the bank or dealing with unreliable contractors.</p>
-          <p>We serve all of Chilliwack and the Fraser Valley, 7 days a week from 7am to 7pm. We show up on time, communicate clearly, and don't leave until the job is done right. No magic tricks — just honest hard work and professional exterior cleaning you can count on.</p>
+          <p>We serve all of Chilliwack and the Fraser Valley. We show up on time, communicate clearly, and don't leave until the job is done right. No magic tricks — just honest hard work and professional exterior cleaning you can count on.</p>
           <a href="#quote" class="btn btn--gold">Book a Clean ✨</a>
         </div>
         <div class="about__logo">
           <img src="brand_assets/Logo.png" alt="Wizard Washing exterior cleaning company Chilliwack BC" />
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== STATS ===================== -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats__grid">
+
+        <div class="stat-item fade-up">
+          <span class="stat-item__number" data-target="108">0</span>
+          <span class="stat-item__label">Homes Cleaned</span>
+        </div>
+
+        <div class="stat-item fade-up" style="transition-delay:0.1s">
+          <span class="stat-item__number" data-target="5" data-suffix="★" data-decimals="1">0</span>
+          <span class="stat-item__label">Google Rating</span>
+        </div>
+
+        <div class="stat-item fade-up" style="transition-delay:0.2s">
+          <span class="stat-item__number" data-target="3244">0</span>
+          <span class="stat-item__label">Spiders Evicted 🕷️</span>
+        </div>
+
       </div>
     </div>
   </section>
@@ -280,15 +304,15 @@
               <input type="text" id="name" name="name" placeholder="e.g. Jane Smith" required />
             </div>
             <div class="form__group">
-              <label for="email">Email Address <span class="required">*</span></label>
-              <input type="email" id="email" name="email" placeholder="you@example.com" required />
+              <label for="phone">Phone Number <span class="required">*</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="e.g. 000-000-0000" required />
             </div>
           </div>
 
           <div class="form__row form__row--two">
             <div class="form__group">
-              <label for="phone">Phone Number <span class="optional">(optional)</span></label>
-              <input type="tel" id="phone" name="phone" placeholder="e.g. 000-000-0000" />
+              <label for="email">Email Address <span class="optional">(optional)</span></label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" />
             </div>
             <div class="form__group">
               <label for="service">Service Required <span class="required">*</span></label>
@@ -297,7 +321,6 @@
                 <option value="House Washing">House Washing</option>
                 <option value="Concrete Cleaning">Concrete Cleaning</option>
                 <option value="Garbage Bin Cleaning">Garbage Bin Cleaning</option>
-                <option value="Roof Cleaning">Roof Cleaning</option>
                 <option value="Multiple Services">Multiple Services</option>
                 <option value="Other">Other</option>
               </select>
@@ -339,19 +362,19 @@
       <p class="section-sub light">Don't just take our word for it — hear it from happy locals.</p>
       <div class="reviews__grid">
 
-        <div class="review-card">
+        <div class="review-card fade-up">
           <div class="review-card__stars">★★★★★</div>
           <p class="review-card__quote">"Our driveway looks brand new! The team was punctual, friendly, and did an incredible job. Highly recommend Wizard Washing to anyone in the valley."</p>
           <p class="review-card__name">— Sarah M., Chilliwack</p>
         </div>
 
-        <div class="review-card">
+        <div class="review-card fade-up" style="transition-delay:0.15s">
           <div class="review-card__stars">★★★★★</div>
           <p class="review-card__quote">"Had the house exterior washed before we listed it for sale. It made such a difference — looks like a completely different house. Worth every penny!"</p>
           <p class="review-card__name">— Mark &amp; Linda T., Chilliwack</p>
         </div>
 
-        <div class="review-card">
+        <div class="review-card fade-up" style="transition-delay:0.3s">
           <div class="review-card__stars">★★★★★</div>
           <p class="review-card__quote">"The garbage bin service is a game changer. No more dreading bin day! Fair price, fast service, and the bins actually smell clean now."</p>
           <p class="review-card__name">— Dave R., Chilliwack</p>
