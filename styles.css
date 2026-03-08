@@ -167,26 +167,10 @@ img {
   color: #1A2B4A !important;
 }
 
-/* Close button inside sidebar (hidden on desktop, shown on mobile) */
+/* Close button inside sidebar — never shown on desktop */
 .nav__close {
-  display: none;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: rgba(255,255,255,0.15);
-  border: none;
-  color: #fff;
-  font-size: 1.6rem;
-  line-height: 1;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
+  display: none !important;
 }
-.nav__close:hover { background: rgba(255,255,255,0.3); }
 
 /* Hamburger */
 .nav__hamburger {
@@ -1012,7 +996,26 @@ img {
   }
   .nav__links.open { right: 0; }
   .nav__links a { font-size: 1.2rem; }
-  .nav__close { display: flex; }
+
+  /* X close button — black, no background, top-right of sidebar */
+  .nav__close {
+    display: flex !important;
+    position: absolute;
+    top: 0.9rem;
+    right: 0.9rem;
+    background: transparent;
+    border: none;
+    color: #000;
+    font-size: 1.8rem;
+    font-weight: 900;
+    line-height: 1;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+  }
 
   /* ── Hero ── */
   .hero {
