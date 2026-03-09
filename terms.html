@@ -192,5 +192,23 @@
     </div>
   </footer>
 
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookie-banner" aria-live="polite">
+    <p>We use Google Analytics to understand how visitors use our site. <a href="privacy.html">Privacy Policy</a> · <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Opt out</a></p>
+    <button class="cookie-banner__btn" id="cookie-accept">Got it</button>
+  </div>
+  <script>
+    (function() {
+      var banner = document.getElementById('cookie-banner');
+      if (!localStorage.getItem('cookie_notice_dismissed')) {
+        banner.classList.add('cookie-banner--visible');
+      }
+      document.getElementById('cookie-accept').addEventListener('click', function() {
+        banner.classList.remove('cookie-banner--visible');
+        localStorage.setItem('cookie_notice_dismissed', '1');
+      });
+    })();
+  </script>
+
 </body>
 </html>

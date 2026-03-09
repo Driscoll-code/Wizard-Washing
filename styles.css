@@ -1005,6 +1005,48 @@ img {
   100% { opacity: 0; transform: translate(-50%, -200%) scale(0.2) rotate(200deg); }
 }
 
+/* ─── COOKIE BANNER ─── */
+.cookie-banner {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #1A2B4A;
+  color: rgba(255,255,255,0.9);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.9rem 2rem;
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+}
+.cookie-banner--visible { display: flex; }
+.cookie-banner p { margin: 0; }
+.cookie-banner a { color: #FDB813; text-decoration: underline; }
+.cookie-banner a:hover { color: #fff; }
+.cookie-banner__btn {
+  flex-shrink: 0;
+  background: #FDB813;
+  color: #1A2B4A;
+  border: none;
+  border-radius: 50px;
+  padding: 0.45rem 1.4rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.cookie-banner__btn:hover { background: #ffca3a; }
+
+@media (max-width: 600px) {
+  .cookie-banner { flex-direction: column; text-align: center; gap: 0.75rem; padding: 1rem 1.25rem; }
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
   .services__grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
