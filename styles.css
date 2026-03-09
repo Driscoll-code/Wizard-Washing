@@ -94,25 +94,69 @@ img {
 .section-sub.light { color: rgba(255,255,255,0.85); }
 
 
+/* ─── TOPBAR ─── */
+.topbar {
+  position: relative;
+  width: 100%;
+  background: transparent;
+  z-index: 110;
+  height: 36px;
+  display: flex;
+  align-items: center;
+}
+
+.topbar__inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topbar__contact {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.85);
+}
+
+.topbar__contact a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.topbar__contact a:hover { color: #FDB813; }
+
+.topbar__sep {
+  opacity: 0.4;
+}
+
+.topbar__social {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.topbar__social a {
+  color: rgba(255,255,255,0.8);
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+.topbar__social a:hover { color: #FDB813; }
+
 /* ─── NAV ─── */
 .nav {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
+  background: transparent;
   z-index: 100;
-  transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
   padding: 0.6rem 0;
-}
-
-.nav.scrolled {
-  background: #1E4E9E;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-  padding: 0.25rem 0;
-}
-
-.nav.scrolled .nav__logo img {
-  height: 108px;
 }
 
 .nav__inner {
@@ -201,7 +245,7 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .hero__sparkles {
@@ -245,8 +289,8 @@ img {
 .hero__inner {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 9rem 3rem 5rem;
+  margin: auto;
+  padding: 2rem 3rem 5rem;
   position: relative;
   z-index: 4;
 }
@@ -974,7 +1018,9 @@ img {
 }
 
 @media (max-width: 768px) {
-  /* ── Nav ── */
+  /* ── Topbar — hide on mobile ── */
+  .topbar { display: none; }
+
   .nav__hamburger { display: flex; }
   /* Smaller logo so it doesn't crowd/overlap hero text */
   .nav__logo img  { height: 48px; }
@@ -1026,9 +1072,8 @@ img {
     overflow: hidden;
   }
 
-  /* Enough top padding to clear the fixed nav */
   .hero__inner {
-    padding: 6rem 1.5rem 1.5rem;
+    padding: 2rem 1.5rem 1.5rem;
     text-align: center;
   }
 
@@ -1093,7 +1138,7 @@ img {
 
 @media (max-width: 480px) {
   .hero__text h1  { font-size: 2rem; }
-  .hero__inner    { padding: 5.5rem 1.25rem 1rem; }
+  .hero__inner    { padding: 1.5rem 1.25rem 1rem; }
 
   .hero__wizard img { width: 92%; max-width: none; }
 
