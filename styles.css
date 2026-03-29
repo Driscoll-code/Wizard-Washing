@@ -917,9 +917,12 @@ img {
 
 /* ─── SCROLL FADE-IN ─── */
 .fade-up {
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.fade-up.fade-anim {
   opacity: 0;
   transform: translateY(36px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
 }
 
 .fade-up.visible {

@@ -136,24 +136,28 @@ form.querySelectorAll('input, select, textarea').forEach(field => {
 });
 
 /* ─── SCROLL FADE-IN ─── */
+/* Progressive enhancement: elements visible by default.
+   Only hide elements below the fold so if observer fails, content is always visible. */
+document.querySelectorAll('.fade-up').forEach(el => {
+  const rect = el.getBoundingClientRect();
+  if (rect.top >= window.innerHeight) {
+    el.classList.add('fade-anim');
+  } else {
+    el.classList.add('visible');
+  }
+});
+
 const fadeObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
+      entry.target.classList.remove('fade-anim');
       entry.target.classList.add('visible');
       fadeObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.1 });
 
-document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
-
-/* Fallback: if IntersectionObserver doesn't fire (e.g. file://) make all visible */
-setTimeout(() => {
-  document.querySelectorAll('.fade-up:not(.visible)').forEach(el => el.classList.add('visible'));
-  document.querySelectorAll('.stat-item__number[data-target]').forEach(el => {
-    if (el.textContent === '0') animateCounter(el);
-  });
-}, 1500);
+document.querySelectorAll('.fade-up.fade-anim').forEach(el => fadeObserver.observe(el));
 
 /* ─── STATS COUNTER ─── */
 function animateCounter(el) {
