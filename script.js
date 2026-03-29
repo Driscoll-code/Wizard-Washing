@@ -147,6 +147,14 @@ const fadeObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
 
+/* Fallback: if IntersectionObserver doesn't fire (e.g. file://) make all visible */
+setTimeout(() => {
+  document.querySelectorAll('.fade-up:not(.visible)').forEach(el => el.classList.add('visible'));
+  document.querySelectorAll('.stat-item__number[data-target]').forEach(el => {
+    if (el.textContent === '0') animateCounter(el);
+  });
+}, 1500);
+
 /* ─── STATS COUNTER ─── */
 function animateCounter(el) {
   const target   = parseFloat(el.dataset.target);
