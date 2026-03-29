@@ -186,7 +186,14 @@ const statObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.15 });
 
-document.querySelectorAll('.stat-item__number[data-target]').forEach(el => statObserver.observe(el));
+document.querySelectorAll('.stat-item__number[data-target]').forEach(el => {
+  const rect = el.getBoundingClientRect();
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    animateCounter(el);
+  } else {
+    statObserver.observe(el);
+  }
+});
 
 /* ─── BUTTON WATER RIPPLE ─── */
 document.querySelectorAll('.btn').forEach(btn => {
