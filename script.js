@@ -144,6 +144,8 @@ document.querySelectorAll('.fade-up').forEach(el => {
     el.classList.add('fade-anim');
   } else {
     el.classList.add('visible');
+    const counter = el.querySelector('.stat-item__number[data-target]');
+    if (counter) animateCounter(counter);
   }
 });
 
@@ -153,6 +155,8 @@ const fadeObserver = new IntersectionObserver((entries) => {
       entry.target.classList.remove('fade-anim');
       entry.target.classList.add('visible');
       fadeObserver.unobserve(entry.target);
+      const counter = entry.target.querySelector('.stat-item__number[data-target]');
+      if (counter) animateCounter(counter);
     }
   });
 }, { threshold: 0.1 });
@@ -177,23 +181,6 @@ function animateCounter(el) {
   requestAnimationFrame(step);
 }
 
-const statObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      animateCounter(entry.target);
-      statObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.15 });
-
-document.querySelectorAll('.stat-item__number[data-target]').forEach(el => {
-  const rect = el.getBoundingClientRect();
-  if (rect.top < window.innerHeight && rect.bottom > 0) {
-    animateCounter(el);
-  } else {
-    statObserver.observe(el);
-  }
-});
 
 /* ─── BUTTON WATER RIPPLE ─── */
 document.querySelectorAll('.btn').forEach(btn => {
