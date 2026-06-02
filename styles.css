@@ -524,6 +524,147 @@ img {
   margin: 0;
 }
 
+/* ─── CREDENTIALS ─── */
+.credentials {
+  background: #F7FAFD;
+  padding: 5rem 1.5rem;
+  border-top: 1px solid #E2EAF4;
+}
+
+.credentials__eyebrow {
+  text-align: center;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  color: #1E4E9E;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 2.5rem;
+}
+
+.credentials__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.credential-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem 1.75rem;
+  text-align: center;
+  border: 1px solid #E2EAF4;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.credential-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+}
+
+.credential-card__icon {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.credential-card h4 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.1rem;
+  color: #1A2B4A;
+  margin-bottom: 0.5rem;
+}
+
+.credential-card p {
+  font-size: 0.88rem;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+/* ─── HOW IT WORKS ─── */
+.how-it-works {
+  background: #EFF8FF;
+  padding: 5rem 1.5rem;
+}
+
+.hiw__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.hiw__step {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.07);
+  position: relative;
+}
+
+.hiw__number {
+  position: absolute;
+  top: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2rem;
+  height: 2rem;
+  background: #1E4E9E;
+  color: #fff;
+  border-radius: 50%;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hiw__icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+}
+
+.hiw__step h3 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.2rem;
+  color: #1A2B4A;
+  margin-bottom: 0.75rem;
+}
+
+.hiw__step p {
+  font-size: 0.95rem;
+  color: #4a5568;
+  line-height: 1.65;
+}
+
+/* ─── FLOATING CALL BUTTON ─── */
+.float-call {
+  display: none;
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 999;
+  background: #FDB813;
+  color: #1A2B4A;
+  border-radius: 50px;
+  padding: 0.85rem 1.5rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.float-call:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+}
+
 /* ─── ABOUT ─── */
 .about {
   position: relative;
@@ -1048,7 +1189,9 @@ img {
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
-  .services__grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  .services__grid     { grid-template-columns: 1fr 1fr; }
+  .hiw__grid          { grid-template-columns: 1fr; max-width: 420px; margin: 2rem auto 0; }
+  .credentials__grid  { grid-template-columns: repeat(2, 1fr); }
   .reviews__grid  { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   .ba-grid        { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
   .stats-bar__inner { gap: 1.25rem; }
@@ -1059,6 +1202,15 @@ img {
 }
 
 @media (max-width: 768px) {
+  /* ── Floating call button — mobile only ── */
+  .float-call { display: flex; }
+
+  /* ── Credentials — single column on mobile ── */
+  .credentials__grid  { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+
+  /* ── How It Works — stack on mobile ── */
+  .hiw__grid { grid-template-columns: 1fr; max-width: 400px; margin: 2rem auto 0; }
+
   /* ── Topbar — hide on mobile ── */
   .topbar { display: none; }
 

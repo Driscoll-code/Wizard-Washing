@@ -116,6 +116,15 @@ form.addEventListener('submit', async (e) => {
       form.style.display     = 'none';
       successBox.classList.add('visible');
       successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // GA4 + Google Ads conversion
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', { event_category: 'Quote Form', event_label: 'Quote Submitted' });
+        gtag('event', 'conversion', { send_to: 'AW-18009225229' });
+      }
+      // Meta Pixel lead event
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead');
+      }
     } else {
       const json = await response.json().catch(() => ({}));
       const msg  = json.errors ? json.errors.map(e => e.message).join(', ') : 'Something went wrong. Please try again.';
