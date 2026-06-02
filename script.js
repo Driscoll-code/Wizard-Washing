@@ -163,6 +163,60 @@ const fadeObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-up.fade-anim').forEach(el => fadeObserver.observe(el));
 
+/* ─── GOOGLE REVIEWS ─── */
+const GOOGLE_API_KEY = 'AIzaSyCC0Vehyu-pGswSgaXsvW2Ez7JeeQoBHDE';
+
+async function loadGoogleReviews() {
+  try {
+    const res = await fetch(
+      'https://places.googleapis.com/v1/places:searchText',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Goog-Api-Key': GOOGLE_API_KEY,
+          'X-Goog-FieldMask': 'places.reviews'
+        },
+        body: JSON.stringify({ textQuery: 'Wizard Washing Chilliwack BC' })
+      }
+    );
+    if (!res.ok) return;
+    const data = await res.json();
+    const reviews = data.places?.[0]?.reviews;
+    if (!reviews || !reviews.length) return;
+
+    const top3 = reviews
+      .sort((a, b) => new Date(b.publishTime) - new Date(a.publishTime))
+      .slice(0, 3);
+
+    const grid = document.getElementById('reviews-grid');
+    if (!grid) return;
+
+    grid.innerHTML = top3.map((r, i) => `
+      <div class="review-card fade-up" ${i > 0 ? `style="transition-delay:${i * 0.15}s"` : ''}>
+        <div class="review-card__stars">${'★'.repeat(r.rating || 5)}</div>
+        <p class="review-card__quote">"${r.text?.text || ''}"</p>
+        <p class="review-card__name">— ${r.authorAttribution?.displayName || 'Google Reviewer'} <span class="review-card__time">${r.relativePublishTimeDescription || ''}</span></p>
+      </div>
+    `).join('');
+
+    grid.querySelectorAll('.review-card.fade-up').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top >= window.innerHeight) {
+        el.classList.add('fade-anim');
+        fadeObserver.observe(el);
+      } else {
+        el.classList.add('visible');
+      }
+    });
+
+  } catch {
+    // API failed — hardcoded reviews remain visible as fallback
+  }
+}
+
+loadGoogleReviews();
+
 /* ─── STATS COUNTER ─── */
 function animateCounter(el) {
   const target   = parseFloat(el.dataset.target);
@@ -217,54 +271,24 @@ if (window.matchMedia('(pointer: fine)').matches) {
   });
 }
 
-/* ─── BEFORE/AFTER CAROUSEL ─── */
-const track   = document.getElementById('carousel-track');
-const prevBtn = document.getElementById('carousel-prev');
-const nextBtn = document.getElementById('carousel-next');
-const dotsEl  = document.getElementById('carousel-dots');
+/* ─── BEFORE/AFTER DRAG SLIDERS ─── */
+document.querySelectorAll('.ba-slider').forEach(slider => {
+  const afterImg = slider.querySelector('.ba-slider__after');
+  const handle   = slider.querySelector('.ba-slider__handle');
+  let dragging   = false;
 
-if (track) {
-  const slides   = Array.from(track.children);
-  const dots     = dotsEl ? Array.from(dotsEl.children) : [];
-  let current    = 0;
-  let autoTimer  = null;
-
-  function goTo(index) {
-    // Wrap around: past last → back to 0, before first → go to last
-    current = ((index % slides.length) + slides.length) % slides.length;
-    track.style.transform = `translateX(-${current * 100}%)`;
-    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  function setPos(clientX) {
+    const rect = slider.getBoundingClientRect();
+    const pct  = Math.max(2, Math.min(98, ((clientX - rect.left) / rect.width) * 100));
+    afterImg.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+    handle.style.left       = pct + '%';
   }
 
-  function startAuto() {
-    clearInterval(autoTimer);
-    autoTimer = setInterval(() => goTo(current + 1), 3500);
-  }
+  slider.addEventListener('mousedown',  e => { dragging = true; setPos(e.clientX); e.preventDefault(); });
+  window.addEventListener('mousemove',  e => { if (dragging) setPos(e.clientX); });
+  window.addEventListener('mouseup',    ()  => { dragging = false; });
 
-  function resetAuto() {
-    startAuto(); // restart the 3.5s timer after any manual interaction
-  }
-
-  prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
-  nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
-  dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetAuto(); }));
-
-  // Pause on hover, resume on leave
-  track.closest('.carousel').addEventListener('mouseenter', () => clearInterval(autoTimer));
-  track.closest('.carousel').addEventListener('mouseleave', () => startAuto());
-
-  // Touch swipe support
-  let touchStartX = 0;
-  track.addEventListener('touchstart', e => {
-    touchStartX = e.touches[0].clientX;
-    clearInterval(autoTimer);
-  }, { passive: true });
-  track.addEventListener('touchend', e => {
-    const diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
-    startAuto();
-  });
-
-  goTo(0);
-  startAuto();
-}
+  slider.addEventListener('touchstart', e => { dragging = true; setPos(e.touches[0].clientX); }, { passive: true });
+  window.addEventListener('touchmove',  e => { if (dragging) setPos(e.touches[0].clientX); },  { passive: true });
+  window.addEventListener('touchend',   ()  => { dragging = false; });
+});

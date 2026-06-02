@@ -397,143 +397,131 @@ img {
 }
 
 /* Carousel outer layout: arrows + window */
-.carousel {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.carousel__window {
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
-  border-radius: 15px;
-}
-
-.carousel__track {
-  display: flex;
-  width: 100%;
-  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.carousel__slide {
-  flex: 0 0 100%;
-}
-
-/* Arrow buttons */
-.carousel__btn {
-  flex-shrink: 0;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: #1E4E9E;
-  color: #fff;
-  border: none;
-  font-size: 2rem;
-  line-height: 1;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-  transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
-}
-
-.carousel__btn:hover:not(:disabled) {
-  background: #FDB813;
-  color: #1A2B4A;
-  transform: scale(1.08);
-}
-
-.carousel__btn:disabled {
-  opacity: 0.3;
-  cursor: default;
-}
-
-/* Dot indicators */
-.carousel__dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.6rem;
-  margin-top: 1.5rem;
-}
-
-.carousel__dot {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: #CBD5E0;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.carousel__dot.active {
-  background: #1E4E9E;
-  transform: scale(1.35);
-}
-
-/* Pair card */
-.results__pair {
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  overflow: hidden;
-}
-
-.results__pair-label {
-  font-family: 'Fredoka One', cursive;
-  font-size: 0.9rem;
-  color: #1E4E9E;
-  text-align: center;
-  padding: 1rem 1.5rem 0.8rem;
-  border-bottom: 2px solid #EFF8FF;
-}
-
-.results__photos {
+/* ─── BEFORE/AFTER DRAG SLIDERS ─── */
+.ba-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
 }
 
-.results__photo-wrap {
+.ba-card {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  background: #fff;
+}
+
+.ba-slider {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 3 / 2;
+  cursor: col-resize;
+  user-select: none;
+  touch-action: pan-y;
+  aspect-ratio: 4 / 3;
 }
 
-.results__photo-wrap:first-child {
-  border-right: 3px solid #EFF8FF;
-}
-
-.results__photo-wrap img {
+.ba-slider__before,
+.ba-slider__after {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  pointer-events: none;
 }
 
-.results__badge {
+.ba-slider__after {
+  clip-path: inset(0 50% 0 0);
+}
+
+.ba-slider__handle {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 2;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  background: #fff;
+  transform: translateX(-50%);
+  z-index: 10;
+  pointer-events: none;
+  box-shadow: 0 0 8px rgba(0,0,0,0.25);
+}
+
+.ba-slider__handle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #FDB813;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.35);
+}
+
+.ba-slider__arrows {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% - 6px));
+  color: #1A2B4A;
+  font-size: 1.3rem;
+  font-weight: 900;
+  z-index: 11;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.ba-slider__drag-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% + 10px));
+  color: #1A2B4A;
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.6rem;
+  letter-spacing: 0.5px;
+  z-index: 11;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.ba-slider__label {
+  position: absolute;
+  bottom: 12px;
+  z-index: 10;
   padding: 0.3rem 0.9rem;
   border-radius: 50px;
   font-family: 'Fredoka One', cursive;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   letter-spacing: 0.5px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  pointer-events: none;
 }
 
-.results__badge--before {
+.ba-slider__label--before {
+  left: 12px;
   background: #1A2B4A;
   color: #fff;
 }
 
-.results__badge--after {
+.ba-slider__label--after {
+  right: 12px;
   background: #FDB813;
   color: #1A2B4A;
+}
+
+.ba-card__caption {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  color: #1E4E9E;
+  text-align: center;
+  padding: 1rem 1.5rem;
+  border-top: 2px solid #EFF8FF;
+  margin: 0;
 }
 
 /* ─── ABOUT ─── */
@@ -759,6 +747,13 @@ img {
   font-weight: 700;
   color: #1E4E9E;
   font-size: 0.9rem;
+}
+
+.review-card__time {
+  font-weight: 400;
+  color: #718096;
+  font-size: 0.8rem;
+  margin-left: 0.4rem;
 }
 
 /* ─── FAQ ─── */
@@ -1054,7 +1049,7 @@ img {
 @media (max-width: 900px) {
   .services__grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   .reviews__grid  { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
-  .carousel__btn  { width: 38px; height: 38px; font-size: 1.4rem; }
+  .ba-grid        { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
   .stats__grid    { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   /* About: column layout — use width not flex-basis so logo doesn't fill full row */
   .about__inner   { flex-direction: column; align-items: center; text-align: center; gap: 2rem; }
@@ -1155,22 +1150,9 @@ img {
   /* ── About ── */
   .about__logo    { flex: none; width: 140px; }
 
-  /* ── Carousel — overlay arrows on top of photos so photos fill full width ── */
+  /* ── Before/After grid — single column on mobile ── */
   .results        { padding: 3rem 0.75rem; }
-  .carousel       { position: relative; gap: 0; }
-  .carousel__window { width: 100%; }
-  .carousel__btn  {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    width: 36px;
-    height: 36px;
-    font-size: 1.3rem;
-    opacity: 0.88;
-  }
-  .carousel__btn--prev { left: 0.4rem; }
-  .carousel__btn--next { right: 0.4rem; }
+  .ba-grid        { grid-template-columns: 1fr; }
 
   /* ── Form ── */
   .form__row--two { flex-direction: column; }
