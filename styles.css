@@ -749,13 +749,6 @@ img {
   font-size: 0.9rem;
 }
 
-.review-card__time {
-  font-weight: 400;
-  color: #718096;
-  font-size: 0.8rem;
-  margin-left: 0.4rem;
-}
-
 /* ─── FAQ ─── */
 .faq {
   position: relative;
