@@ -168,21 +168,32 @@ const GOOGLE_API_KEY = 'AIzaSyCC0Vehyu-pGswSgaXsvW2Ez7JeeQoBHDE';
 
 async function loadGoogleReviews() {
   try {
-    const res = await fetch(
+    // Step 1: find the Place ID via text search
+    const searchRes = await fetch(
       'https://places.googleapis.com/v1/places:searchText',
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'X-Goog-Api-Key': GOOGLE_API_KEY,
-          'X-Goog-FieldMask': 'places.reviews'
+          'X-Goog-FieldMask': 'places.id'
         },
         body: JSON.stringify({ textQuery: 'Wizard Washing Chilliwack BC' })
       }
     );
-    if (!res.ok) return;
-    const data = await res.json();
-    const reviews = data.places?.[0]?.reviews;
+    if (!searchRes.ok) return;
+    const searchData = await searchRes.json();
+    const placeId = searchData.places?.[0]?.id;
+    if (!placeId) return;
+
+    // Step 2: fetch reviews from Place Details using the Place ID
+    const detailRes = await fetch(
+      `https://places.googleapis.com/v1/places/${placeId}?languageCode=en&key=${GOOGLE_API_KEY}`,
+      { headers: { 'X-Goog-FieldMask': 'reviews' } }
+    );
+    if (!detailRes.ok) return;
+    const detailData = await detailRes.json();
+    const reviews = detailData.reviews;
     if (!reviews || !reviews.length) return;
 
     const top3 = reviews
