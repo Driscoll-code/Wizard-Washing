@@ -163,7 +163,6 @@ const fadeObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-up.fade-anim').forEach(el => fadeObserver.observe(el));
 
-
 /* ─── STATS COUNTER ─── */
 function animateCounter(el) {
   const target   = parseFloat(el.dataset.target);
@@ -182,6 +181,10 @@ function animateCounter(el) {
   requestAnimationFrame(step);
 }
 
+// Stats bar counters are always visible on load — animate immediately
+document.querySelectorAll('.stats-bar .stat-item__number[data-target]').forEach(el => {
+  animateCounter(el);
+});
 
 /* ─── BUTTON WATER RIPPLE ─── */
 document.querySelectorAll('.btn').forEach(btn => {

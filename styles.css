@@ -919,39 +919,47 @@ img {
 }
 
 /* ─── STATS STRIP ─── */
-.stats {
+/* ─── STATS BAR ─── */
+.stats-bar {
   background: #1A2B4A;
-  padding: 4rem 1.5rem;
-}
-
-.stats__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  padding: 0.55rem 1.5rem;
   text-align: center;
+  width: 100%;
 }
 
-.stat-item {
+.stats-bar__inner {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-.stat-item__number {
+.stats-bar__item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.stats-bar__item .stat-item__number {
   font-family: 'Fredoka One', cursive;
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-size: 1.05rem;
   color: #FDB813;
   line-height: 1;
-  display: block;
 }
 
-.stat-item__label {
-  font-size: 0.95rem;
-  color: rgba(255,255,255,0.8);
+.stats-bar__label {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.85);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
+}
+
+.stats-bar__divider {
+  color: rgba(255,255,255,0.25);
+  font-size: 1rem;
+  user-select: none;
 }
 
 /* ─── BUTTON WATER RIPPLE ─── */
@@ -1043,7 +1051,7 @@ img {
   .services__grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   .reviews__grid  { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   .ba-grid        { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
-  .stats__grid    { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .stats-bar__inner { gap: 1.25rem; }
   /* About: column layout — use width not flex-basis so logo doesn't fill full row */
   .about__inner   { flex-direction: column; align-items: center; text-align: center; gap: 2rem; }
   .about__logo    { flex: none; width: 160px; }
@@ -1136,9 +1144,9 @@ img {
     margin-left: auto; /* flush right */
   }
 
-  /* ── Stats ── */
-  .stats          { padding: 2.5rem 1.5rem; }
-  .stats__grid    { grid-template-columns: 1fr; gap: 1.25rem; }
+  /* ── Stats bar ── */
+  .stats-bar      { padding: 0.5rem 1rem; }
+  .stats-bar__divider { display: none; }
 
   /* ── About ── */
   .about__logo    { flex: none; width: 140px; }
@@ -1162,7 +1170,6 @@ img {
 
   .hero__wizard img { width: 92%; max-width: none; }
 
-  .stat-item__number { font-size: 2.4rem; }
 
   .services__grid,
   .reviews__grid  { grid-template-columns: 1fr; }
