@@ -8,42 +8,41 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
 });
 
-/* ─── HAMBURGER MENU ─── */
+/* ─── HAMBURGER MENU (only wires up if elements exist) ─── */
 const hamburger  = document.getElementById('hamburger');
 const navLinks   = document.getElementById('nav-links');
 const navClose   = document.getElementById('nav-close');
 
-function closeNav() {
-  navLinks.classList.remove('open');
-  hamburger.setAttribute('aria-expanded', 'false');
-  const spans = hamburger.querySelectorAll('span');
-  spans[0].style.transform = '';
-  spans[1].style.opacity   = '';
-  spans[2].style.transform = '';
-}
-
-hamburger.addEventListener('click', () => {
-  const isOpen = navLinks.classList.toggle('open');
-  hamburger.setAttribute('aria-expanded', isOpen);
-  // Animate hamburger to X
-  const spans = hamburger.querySelectorAll('span');
-  if (isOpen) {
-    spans[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
-    spans[1].style.opacity   = '0';
-    spans[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
-  } else {
+if (hamburger && navLinks && navClose) {
+  function closeNav() {
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    const spans = hamburger.querySelectorAll('span');
     spans[0].style.transform = '';
     spans[1].style.opacity   = '';
     spans[2].style.transform = '';
   }
-});
 
-navClose.addEventListener('click', closeNav);
+  hamburger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    const spans = hamburger.querySelectorAll('span');
+    if (isOpen) {
+      spans[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
+      spans[1].style.opacity   = '0';
+      spans[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
+    } else {
+      spans[0].style.transform = '';
+      spans[1].style.opacity   = '';
+      spans[2].style.transform = '';
+    }
+  });
 
-// Close menu when a nav link is clicked
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', closeNav);
-});
+  navClose.addEventListener('click', closeNav);
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeNav);
+  });
+}
 
 /* ─── FAQ ACCORDION ─── */
 document.querySelectorAll('.faq__question').forEach(btn => {

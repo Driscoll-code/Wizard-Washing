@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 52" width="220" height="52">
+  <rect width="220" height="52" rx="4" fill="#1a1a1a"/>
+  <rect x="110" width="110" height="52" rx="0" fill="#f26522"/>
+  <rect x="106" width="110" height="52" fill="#f26522"/>
+  <rect x="106" width="4" height="52" fill="#1a1a1a"/>
+  <text x="54" y="33" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="18" fill="#ffffff" text-anchor="middle" letter-spacing="1">WORK</text>
+  <text x="163" y="33" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="18" fill="#ffffff" text-anchor="middle" letter-spacing="1">SAFE BC</text>
+</svg>
