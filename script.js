@@ -114,7 +114,7 @@ form.addEventListener('submit', async (e) => {
       // GA4 + Google Ads conversion
       if (typeof gtag === 'function') {
         gtag('event', 'generate_lead', { event_category: 'Quote Form', event_label: 'Quote Submitted' });
-        gtag('event', 'conversion', { send_to: 'AW-18009225229' });
+        gtag('event', 'conversion', {'send_to': 'AW-18009225229/lh7-CLu6k7ocEI3wu4tD'});
       }
       // Meta Pixel lead event
       if (typeof fbq === 'function') {
