@@ -111,10 +111,6 @@ form.addEventListener('submit', async (e) => {
     });
 
     if (response.ok) {
-      // Hide form, show success
-      form.style.display     = 'none';
-      successBox.classList.add('visible');
-      successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
       // GA4 + Google Ads conversion
       if (typeof gtag === 'function') {
         gtag('event', 'generate_lead', { event_category: 'Quote Form', event_label: 'Quote Submitted' });
@@ -124,6 +120,8 @@ form.addEventListener('submit', async (e) => {
       if (typeof fbq === 'function') {
         fbq('track', 'Lead');
       }
+      // Redirect to thank-you page
+      window.location.href = '/thank-you.html';
     } else {
       const json = await response.json().catch(() => ({}));
       const msg  = json.errors ? json.errors.map(e => e.message).join(', ') : 'Something went wrong. Please try again.';
@@ -207,27 +205,6 @@ document.querySelectorAll('.btn').forEach(btn => {
   });
 });
 
-/* ─── CURSOR SPARKLE TRAIL (desktop only) ─── */
-if (window.matchMedia('(pointer: fine)').matches) {
-  const CHARS = ['✦', '★', '✦', '✧', '★'];
-  let lastSpawn = 0;
-
-  document.addEventListener('mousemove', (e) => {
-    const now = Date.now();
-    if (now - lastSpawn < 80) return; // throttle: max ~12/sec
-    if (Math.random() > 0.55) return; // random skip for natural look
-    lastSpawn = now;
-
-    const el = document.createElement('span');
-    el.className  = 'cursor-sparkle';
-    el.textContent = CHARS[Math.floor(Math.random() * CHARS.length)];
-    el.style.left = e.clientX + 'px';
-    el.style.top  = e.clientY + 'px';
-    el.style.fontSize = (0.5 + Math.random() * 0.6) + 'rem';
-    document.body.appendChild(el);
-    setTimeout(() => el.remove(), 800);
-  });
-}
 
 /* ─── BEFORE/AFTER DRAG SLIDERS ─── */
 document.querySelectorAll('.ba-slider').forEach(slider => {

@@ -74,6 +74,11 @@ img {
 
 .btn--full { width: 100%; }
 
+.section-cta-wrap {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
 .section-title {
   font-size: clamp(2rem, 4vw, 2.8rem);
   text-align: center;
@@ -152,11 +157,37 @@ img {
 
 /* ─── NAV ─── */
 .nav {
-  position: relative;
+  position: sticky;
+  top: 0;
   width: 100%;
   background: transparent;
   z-index: 100;
   padding: 0.6rem 0;
+  transition: background 0.3s ease;
+}
+
+.nav.scrolled {
+  background: rgba(15,30,80,0.97);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+}
+
+.nav__cta-btn {
+  background: #FDB813;
+  color: #1A2B4A;
+  padding: 0.55rem 1.4rem;
+  border-radius: 8px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 3px 10px rgba(253,184,19,0.4);
+}
+
+.nav__cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(253,184,19,0.5);
 }
 
 .nav__inner {
@@ -1073,7 +1104,7 @@ img {
 .faq__answer p {
   padding: 0 1.5rem 1.25rem;
   font-size: 0.95rem;
-  color: #4a5568;
+  color: #1A2B4A;
   line-height: 1.7;
 }
 
@@ -1248,64 +1279,7 @@ img {
 }
 
 /* ─── CURSOR SPARKLE TRAIL ─── */
-.cursor-sparkle {
-  position: fixed;
-  pointer-events: none;
-  color: #FDB813;
-  font-size: 0.75rem;
-  z-index: 9999;
-  line-height: 1;
-  animation: cursor-sparkle-fade 0.75s ease-out forwards;
-  transform: translate(-50%, -50%);
-  user-select: none;
-}
-
-@keyframes cursor-sparkle-fade {
-  0%   { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
-  100% { opacity: 0; transform: translate(-50%, -200%) scale(0.2) rotate(200deg); }
-}
-
 /* ─── COOKIE BANNER ─── */
-.cookie-banner {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: #1A2B4A;
-  color: rgba(255,255,255,0.9);
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 0.9rem 2rem;
-  z-index: 999;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
-}
-.cookie-banner--visible { display: flex; }
-.cookie-banner p { margin: 0; }
-.cookie-banner a { color: #FDB813; text-decoration: underline; }
-.cookie-banner a:hover { color: #fff; }
-.cookie-banner__btn {
-  flex-shrink: 0;
-  background: #FDB813;
-  color: #1A2B4A;
-  border: none;
-  border-radius: 50px;
-  padding: 0.45rem 1.4rem;
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 800;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.cookie-banner__btn:hover { background: #ffca3a; }
-
-@media (max-width: 600px) {
-  .cookie-banner { flex-direction: column; text-align: center; gap: 0.75rem; padding: 1rem 1.25rem; }
-}
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
